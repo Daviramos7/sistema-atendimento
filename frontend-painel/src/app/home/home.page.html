@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true">
+  
+  <div class="painel-container">
+    
+    <div class="destaque-principal">
+      <div *ngIf="senhaPrincipal; else esperando">
+        <h2 class="titulo-guiche">GUICHÊ {{ senhaPrincipal.guiche_id }}</h2>
+        
+        <h1 class="senha-gigante">{{ senhaPrincipal.senha_formatada }}</h1>
+        
+        <div class="tipo-senha">
+          {{ senhaPrincipal.tipo_senha === 'SP' ? 'PRIORITÁRIO' : (senhaPrincipal.tipo_senha === 'SE' ? 'EXAMES' : 'GERAL') }}
+        </div>
+      </div>
+      
+      <ng-template #esperando>
+        <div class="esperando">
+          <ion-spinner name="crescent" color="light"></ion-spinner>
+          <p>Aguardando chamadas...</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="historico-lateral">
+      <div class="titulo-historico">ÚLTIMAS CHAMADAS</div>
+      
+      <div class="item-historico" *ngFor="let item of historico">
+        <div class="senha-hist">{{ item.senha_formatada }}</div>
+        <div class="guiche-hist">Guichê {{ item.guiche_id }}</div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
