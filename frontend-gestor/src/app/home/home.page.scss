@@ -1,0 +1,64 @@
+.section-title {
+  margin-top: 20px;
+  margin-left: 5px;
+  font-size: 1.2rem;
+  color: var(--ion-color-medium);
+  font-weight: 600;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  ion-card {
+    flex: 1;
+    min-width: 150px; /* Garante que não fique muito espremido no celular */
+    margin: 0;
+  }
+}
+
+.kpi-card {
+  border-left: 5px solid var(--ion-color-primary);
+}
+
+.tm-card {
+  border-left: 5px solid var(--ion-color-warning);
+  ion-card-title {
+    color: var(--ion-color-dark);
+  }
+}
+
+/* Estilo da Tabela */
+.tabela-container {
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-x: auto; /* Permite rolar para o lado se a tabela for grande */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    
+    th {
+      text-align: left;
+      color: #666;
+      font-size: 0.8rem;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    td {
+      padding: 10px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #f5f5f5;
+      color: #333;
+    }
+
+    .bold {
+      font-weight: bold;
+      color: var(--ion-color-primary);
+    }
+  }
+}

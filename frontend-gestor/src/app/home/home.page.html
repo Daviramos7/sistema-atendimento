@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>Dashboard Gerencial</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="carregarDados(null)">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="light">
+  
+  <ion-refresher slot="fixed" (ionRefresh)="carregarDados($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <h2 class="section-title">Produção</h2>
+  <div class="cards-container">
+    <ion-card *ngFor="let item of producao" class="kpi-card">
+      <ion-card-header>
+        <ion-card-subtitle>{{ item.tipo_senha === 'SP' ? 'PRIORITÁRIO' : (item.tipo_senha === 'SE' ? 'EXAMES' : 'GERAL') }}</ion-card-subtitle>
+        <ion-card-title>{{ item.total_atendidas }} / {{ item.total_emitidas }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Atendidos de Emitidos
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <h2 class="section-title">Tempo Médio (TM)</h2>
+  <div class="cards-container">
+    <ion-card *ngFor="let item of performance" class="tm-card">
+      <ion-card-header>
+        <ion-card-subtitle>TM - {{ item.tipo_senha }}</ion-card-subtitle>
+        <ion-card-title>⏱ {{ formatarTempo(item.tempo_medio_minutos) }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <h2 class="section-title">Auditoria Completa</h2>
+  <div class="tabela-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Senha</th>
+          <th>Tipo</th>
+          <th>Emissão</th>
+          <th>Chamada</th>
+          <th>Fim</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of detalhado">
+          <td class="bold">{{ row.senha_formatada }}</td>
+          <td>{{ row.tipo_senha }}</td>
+          <td>{{ row.emissao ? row.emissao.split(' ')[1] : '-' }}</td> <td>{{ row.chamada ? row.chamada.split(' ')[1] : '-' }}</td>
+          <td>{{ row.finalizacao ? row.finalizacao.split(' ')[1] : '-' }}</td>
+          <td>
+            <ion-badge [color]="row.status === 'CONCLUIDO' ? 'success' : (row.status === 'CHAMADO' ? 'warning' : 'medium')">
+              {{ row.status }}
+            </ion-badge>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</ion-content>

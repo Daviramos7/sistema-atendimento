@@ -1,0 +1,7 @@
+{
+  "name": "frontend-gestor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
