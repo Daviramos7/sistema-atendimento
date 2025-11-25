@@ -1,0 +1,32 @@
+.painel-controle {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.estado-livre {
+  h2 {
+    color: var(--ion-color-medium);
+    margin-bottom: 20px;
+  }
+}
+
+.estado-ocupado {
+  background-color: #f5f5f5; /* Fundo cinza claro para destacar */
+  padding: 30px;
+  border-radius: 20px;
+  border: 2px solid var(--ion-color-light);
+  
+  h3 {
+    margin: 0;
+    color: var(--ion-color-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.senha-gigante {
+  font-size: 4.5rem; /* Texto bem grande */
+  font-weight: 900;
+  color: var(--ion-color-tertiary);
+  margin: 20px 0 40px 0;
+}

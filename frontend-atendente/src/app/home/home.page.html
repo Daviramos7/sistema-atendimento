@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-title>Mesa do Atendente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label position="stacked">Seu Guichê (Nº)</ion-label>
+        <ion-input type="number" [(ngModel)]="guiche" placeholder="Ex: 1"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="painel-controle" *ngIf="guiche">
+    
+    <div *ngIf="!senhaAtual" class="estado-livre">
+      <h2>Mesa Livre</h2>
+      <ion-button expand="block" size="large" color="success" (click)="chamar()">
+        <ion-icon name="megaphone-outline" slot="start"></ion-icon>
+        CHAMAR PRÓXIMO
+      </ion-button>
+    </div>
+
+    <div *ngIf="senhaAtual" class="estado-ocupado">
+      <h3>Atendendo agora:</h3>
+      
+      <div class="senha-gigante">{{ senhaAtual }}</div>
+      
+      <ion-button expand="block" size="large" color="danger" (click)="finalizar()">
+        <ion-icon name="checkmark-done-outline" slot="start"></ion-icon>
+        FINALIZAR ATENDIMENTO
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>
